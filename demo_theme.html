@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>
+        {TITLE}
+    </title>
+    <link rel="shortcut icon" href="{Favicon}" />
+    <link rel="alternate" type="application/rss+xml" href="{RSS}" />
+    <meta name="if:Avatar" content="1" />
+    <meta name="image:avatar" content="" />
+        <style>
+        *{
+         margin: 0;
+         padding: 0;
+        }
+        body{
+            background-image: url('http://www.theawl.com/wp-content/uploads/2012/08/Screen-shot-2012-08-09-at-12.42.47-PM-640x398.jpg');
+            color: #000;
+        }
+        #wrap{
+            position: relative;
+            margin: 110px auto;
+            width: 500px;
+            left: 10%;
+        }
+        #content{
+            background: #FFF;
+            width: 500px;
+            padding: 10px;
+            box-shadow: 1px 2px 1px 1px #ccc;
+            margin: 10px;
+        }
+        #sidebar{
+            background: #FFF;
+            position: absolute;
+            left: 5%;
+            top: 100px;
+            width: 250px;
+            height: auto;
+            min-height: 400px;
+            box-shadow: 1px 2px 1px 1px #ccc;
+        }
+        .wrap{
+            padding: 10px 25px 10px;
+            width: auto;
+            height: auto;
+        }
+        .wrap h2{
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .nav{
+            position: absolute;
+            bottom: 5px;
+        }
+        </style>
+    </head>
+    <body>
+    <div id="sidebar">
+         <div class="wrap">
+        {block:ifAvatar}
+        <a href="{BlogURL}"><img src="{image:Avatar}" width="200px" alt="Avatar"></a>
+        {/block:ifAvatar}
+            <h2>{TITLE}</h2>
+            <p>{Description}</p>
+            <div class="nav">
+                {block:PreviousPage}
+                <a href="{PreviousPage}">Previous</a>
+                {/block:PreviousPage}
+                {block:NextPage}
+                <a href="{NextPage}">Next</a>
+                {/block:NextPage}
+            </div>
+        </div>
+    </div>
+    
+    <div id="wrap">
+        {block:Posts}
+    <div id="content">
+            {block:Text}
+                {block:Title}
+                <h2><a href="{Permalink}">{Title}</a></h2>
+                {/block:Title}
+                {Body}
+            {/block:Text}
+        
+            {block:Photo}
+                <a href="{Permalink}">
+                <img src="{PhotoURL-500}" alt="{PhotoAlt}" width="100%">
+                </a>
+                {block:Caption}
+                {Caption}
+                {block:Caption}
+            {/block:Photo}
+            
+            {block:Video}
+                 {Video-500}
+                {block:Caption}
+                {Caption}
+                {/block:Caption}
+            {/block:Video}
+    </div>
+        {/block:Posts}
+    </div>
+    </body>
+    
+</html>
